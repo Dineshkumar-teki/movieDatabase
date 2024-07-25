@@ -1,0 +1,47 @@
+.specificMovie {
+  background: whitesmoke;
+  padding: 3rem;
+  min-height: 100vh;
+}
+.specificMovieCard > img {
+  border-radius: 20px;
+}
+.specificMovieCard {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 4px 16px 0 pink;
+}
+.specificMovieDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.specificMovieDetails h1 {
+  font-size: 3rem;
+}
+.movieDuration,
+.movieReleaseDate,
+.movieRating {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: gray;
+}
+.movieDuration > span,
+.movieReleaseDate > span,
+.movieRating > span {
+  font-weight: 700;
+  color: black;
+  font-size: 1.4rem;
+}
+.slider {
+  width: 62vw;
+}
+.moreEle {
+  color: blue;
+  background-color: white;
+  border: none;
+  outline: none;
+}

@@ -1,0 +1,37 @@
+.popularMovies {
+  padding: 2rem;
+}
+.popularMovies > h1 {
+  margin-bottom: 1rem;
+}
+.moviesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+.loader {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leftAndRightArrow {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.leftAndRightArrow > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  color: rgb(44, 44, 44);
+}
+.topArrow {
+  font-size: 2rem;
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+}

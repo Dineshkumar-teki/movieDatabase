@@ -1,0 +1,101 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background-color: whitesmoke;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 16px pink;
+}
+nav h1 span {
+  color: orange;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style-type: none;
+}
+nav ul li {
+  font-weight: 600;
+  color: gray;
+}
+.inputContainer {
+  display: flex;
+}
+nav div input {
+  width: 70%;
+  height: 40px;
+  border: 1px solid silver;
+  border-right: 0 solid;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  padding: 0 20px;
+  font-size: 15px;
+  color: gray;
+}
+.iconContainer {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  display: grid;
+  place-items: center;
+  border-radius: 0 20px 20px 0;
+  border: 1px solid silver;
+  border-left: 0 solid;
+  color: gray;
+}
+nav a {
+  color: gray;
+  text-decoration: none;
+}
+.appLogo {
+  font-size: 1.8rem;
+}
+#mobile {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  align-self: center;
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 769px) {
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.2rem;
+    padding: 1rem 1rem;
+    position: absolute;
+    top: 70px;
+    right: -300px;
+    border-radius: 10px 0 0 10px;
+    background-color: whitesmoke;
+    width: 300px;
+    height: 100vh;
+    transition: 1s ease-in-out;
+    box-shadow: 0 4px 16px pink;
+  }
+  #navbar li {
+    width: 100%;
+    text-align: center;
+  }
+  #mobile {
+    display: block;
+  }
+  #navbar.active {
+    right: 0;
+  }
+  .appLogo {
+    font-size: 1.4rem;
+    margin-right: 10px;
+  }
+  nav {
+    padding: 0.8rem 1rem;
+  }
+}
