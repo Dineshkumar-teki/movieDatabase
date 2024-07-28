@@ -6,14 +6,16 @@
   gap: 10px;
   margin: 10px;
   padding: 10px;
+  width: 200px;
 }
 .castProfile > img {
   width: 80px;
   height: 80px;
-  border-radius: 10px;
+  border-radius: 40px;
+  object-fit: cover;
 }
 .castProfile > div {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }

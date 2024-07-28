@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
-import {FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight} from 'react-icons/fa'
 import NavBar from '../NavBar'
 import MovieCard from '../MovieCard'
 import SearchContext from '../../context/SearchContext'
@@ -39,7 +38,7 @@ class PopularMovies extends Component {
   }
 
   getPageView = () => {
-    const {view, popularMovies} = this.state
+    const {view, popularMovies, pageNo} = this.state
     switch (view) {
       case pageView.loading:
         return (
@@ -58,11 +57,29 @@ class PopularMovies extends Component {
                   .includes(searchedName.toLowerCase()),
               )
               return (
-                <ul className="moviesContainer">
-                  {filteredList.map(eachMovie => (
-                    <MovieCard movieDetails={eachMovie} key={eachMovie.id} />
-                  ))}
-                </ul>
+                <>
+                  <NavBar />
+                  <section className="popularMovies">
+                    <h1>Popular Movies</h1>
+                    <ul className="moviesContainer">
+                      {filteredList.map(eachMovie => (
+                        <MovieCard
+                          movieDetails={eachMovie}
+                          key={eachMovie.id}
+                        />
+                      ))}
+                    </ul>
+                    <div className="leftAndRightArrow">
+                      <button type="button" onClick={this.prevPage}>
+                        {'<'}
+                      </button>
+                      <p>{pageNo}</p>
+                      <button type="button" onClick={this.nextPage}>
+                        {'>'}
+                      </button>
+                    </div>
+                  </section>
+                </>
               )
             }}
           </SearchContext.Consumer>
@@ -90,23 +107,7 @@ class PopularMovies extends Component {
   }
 
   render() {
-    return (
-      <>
-        <NavBar />
-        <section className="popularMovies">
-          <h1>Popular Movies</h1>
-          {this.getPageView()}
-          <div className="leftAndRightArrow">
-            <button type="button" onClick={this.prevPage}>
-              <FaRegArrowAltCircleLeft />
-            </button>
-            <button type="button" onClick={this.nextPage}>
-              <FaRegArrowAltCircleRight />
-            </button>
-          </div>
-        </section>
-      </>
-    )
+    return <>{this.getPageView()}</>
   }
 }
 

@@ -1,5 +1,4 @@
 import {Link} from 'react-router-dom'
-import {FaStar} from 'react-icons/fa'
 import './index.css'
 
 const MovieCard = props => {
@@ -12,7 +11,6 @@ const MovieCard = props => {
       <div className="imgContainer">
         <img src={movieImgUrl} alt="Movie Poster" />
         <div className="ratingContainer">
-          <FaStar className="star" />
           <p className="rating">{formatedRating}/10</p>
         </div>
       </div>

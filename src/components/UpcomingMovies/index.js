@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
-import {FaChevronCircleRight, FaChevronCircleLeft} from 'react-icons/fa'
 import NavBar from '../NavBar'
 import MovieCard from '../MovieCard'
 import SearchContext from '../../context/SearchContext'
@@ -90,6 +89,7 @@ class UpcomingMovies extends Component {
   }
 
   render() {
+    const {pageNo} = this.state
     return (
       <>
         <NavBar />
@@ -98,10 +98,11 @@ class UpcomingMovies extends Component {
           {this.getPageView()}
           <div className="leftAndRightArrow">
             <button type="button" onClick={this.prevPage}>
-              <FaChevronCircleLeft className="" />
+              {'<'}
             </button>
+            <p>{pageNo}</p>
             <button type="button" onClick={this.nextPage}>
-              <FaChevronCircleRight />
+              {'>'}
             </button>
           </div>
         </section>

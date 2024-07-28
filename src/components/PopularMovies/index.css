@@ -21,17 +21,25 @@
   gap: 1rem;
   justify-content: center;
   margin-top: 1.5rem;
+  align-items: center;
 }
-.leftAndRightArrow > button {
-  background-color: transparent;
+.leftAndRightArrow > p,
+.leftAndRightArrow > button{
+  background-color: black;
   border: none;
+  border-radius: 8px;
   outline: none;
-  font-size: 2rem;
-  color: rgb(44, 44, 44);
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 700;
+  padding: .5rem 1rem;
 }
 .topArrow {
   font-size: 2rem;
   position: fixed;
   bottom: 100px;
   right: 100px;
+}
+button {
+  cursor: pointer;
 }

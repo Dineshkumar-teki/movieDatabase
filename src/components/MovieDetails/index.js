@@ -1,8 +1,5 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import Slider from 'react-slick'
 import EachCastMemberDetails from '../EachCastMemberDetails'
 import NavBar from '../NavBar'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
@@ -138,14 +135,14 @@ class MovieDetails extends Component {
               )}
 
               <h2>Cast:</h2>
-              <Slider {...settings} className="slider">
+              <ul className="castMembers">
                 {castMembersList.map(eachItem => (
                   <EachCastMemberDetails
                     eachMember={eachItem}
                     key={eachItem.id}
                   />
                 ))}
-              </Slider>
+              </ul>
             </div>
           </div>
         )
