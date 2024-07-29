@@ -15,7 +15,7 @@ const tabItems = [
 
 // write your code here
 class App extends Component {
-  state = {activeTab: tabItems[0].id, searchedName: ''}
+  state = {activeTab: tabItems[0].id, searchedName: '', filterSearchedName: ''}
 
   changeTabItem = id => {
     this.setState({activeTab: id})
@@ -25,8 +25,13 @@ class App extends Component {
     this.setState({searchedName: value})
   }
 
+  getSearchBtn = () => {
+    const {searchedName} = this.state
+    this.setState({filterSearchedName: searchedName})
+  }
+
   render() {
-    const {activeTab, searchedName} = this.state
+    const {activeTab, searchedName, filterSearchedName} = this.state
     return (
       <SearchContext.Provider
         value={{
@@ -34,6 +39,8 @@ class App extends Component {
           changeTabItem: this.changeTabItem,
           searchedName,
           getSearchedName: this.getSearchedName,
+          filterSearchedName,
+          getSearchBtn: this.getSearchBtn,
         }}
       >
         <Switch>

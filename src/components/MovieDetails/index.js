@@ -73,15 +73,6 @@ class MovieDetails extends Component {
     const {duration} = movieDetails
     const durationInHr = Math.floor(parseInt(duration) / 60)
     const durationInMin = parseInt(duration) - durationInHr * 60
-    const settings = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      arrows: false,
-      autoplay: true,
-    }
     switch (view) {
       case pageView.loading:
         return (

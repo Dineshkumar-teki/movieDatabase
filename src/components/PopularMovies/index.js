@@ -26,15 +26,23 @@ class PopularMovies extends Component {
     const apiKey = 'cdbd8ea63442d3e614727de48dc80176'
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${pageNo}`
     const response = await fetch(url)
-    const responseData = await response.json()
-    const moviesList = responseData.results
-    const formatedMoviesList = moviesList.map(eachItem => ({
-      id: eachItem.id,
-      title: eachItem.title,
-      posterPath: eachItem.poster_path,
-      rating: eachItem.vote_average,
-    }))
-    this.setState({popularMovies: formatedMoviesList, view: pageView.success})
+    if (response.ok) {
+      const responseData = await response.json()
+      const moviesList = responseData.results
+      const formatedMoviesList = moviesList.map(eachItem => ({
+        id: eachItem.id,
+        title: eachItem.title,
+        posterPath: eachItem.poster_path,
+        rating: eachItem.vote_average,
+      }))
+      this.setState({popularMovies: formatedMoviesList, view: pageView.success})
+    } else {
+      this.setState({view: pageView.failure})
+    }
+  }
+
+  reloadPage = () => {
+    this.fetchPopularMovies()
   }
 
   getPageView = () => {
@@ -50,11 +58,11 @@ class PopularMovies extends Component {
         return (
           <SearchContext.Consumer>
             {value => {
-              const {searchedName} = value
+              const {filterSearchedName} = value
               const filteredList = popularMovies.filter(eachOne =>
                 eachOne.title
                   .toLowerCase()
-                  .includes(searchedName.toLowerCase()),
+                  .includes(filterSearchedName.toLowerCase()),
               )
               return (
                 <>
@@ -83,6 +91,19 @@ class PopularMovies extends Component {
               )
             }}
           </SearchContext.Consumer>
+        )
+      case pageView.failure:
+        return (
+          <div className="failureView">
+            <img
+              src="https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127829.jpg?size=626&ext=jpg&uid=R136712360&ga=GA1.1.1914382452.1716092979&semt=ais_user"
+              alt=""
+            />
+            <h1>Something Went Wrong!!!</h1>
+            <button type="button" onClick={this.reloadPage}>
+              Reload
+            </button>
+          </div>
         )
       default:
         return null

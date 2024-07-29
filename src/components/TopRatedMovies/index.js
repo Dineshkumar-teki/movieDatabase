@@ -27,18 +27,25 @@ class TopRatedMovies extends Component {
     const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${pageNo}`
     const response = await fetch(url)
     const responseData = await response.json()
-    const moviesList = responseData.results
-    const formatedMoviesList = moviesList.map(eachItem => ({
-      id: eachItem.id,
-      title: eachItem.title,
-      posterPath: eachItem.poster_path,
-      rating: eachItem.vote_average,
-    }))
-    this.setState({topRatedMovies: formatedMoviesList, view: pageView.success})
+    if (response.ok) {
+      const moviesList = responseData.results
+      const formatedMoviesList = moviesList.map(eachItem => ({
+        id: eachItem.id,
+        title: eachItem.title,
+        posterPath: eachItem.poster_path,
+        rating: eachItem.vote_average,
+      }))
+      this.setState({
+        topRatedMovies: formatedMoviesList,
+        view: pageView.success,
+      })
+    } else {
+      this.setState({view: pageView.failure})
+    }
   }
 
   getPageView = () => {
-    const {view, topRatedMovies} = this.state
+    const {view, topRatedMovies, pageNo} = this.state
     switch (view) {
       case pageView.loading:
         return (
@@ -50,21 +57,52 @@ class TopRatedMovies extends Component {
         return (
           <SearchContext.Consumer>
             {value => {
-              const {searchedName} = value
+              const {filterSearchedName} = value
               const filteredList = topRatedMovies.filter(eachOne =>
                 eachOne.title
                   .toLowerCase()
-                  .includes(searchedName.toLowerCase()),
+                  .includes(filterSearchedName.toLowerCase()),
               )
               return (
-                <ul className="moviesContainer">
-                  {filteredList.map(eachMovie => (
-                    <MovieCard movieDetails={eachMovie} key={eachMovie.id} />
-                  ))}
-                </ul>
+                <>
+                  <NavBar />
+                  <section className="popularMovies">
+                    <h1>Top Rated Movies</h1>
+                    <ul className="moviesContainer">
+                      {filteredList.map(eachMovie => (
+                        <MovieCard
+                          movieDetails={eachMovie}
+                          key={eachMovie.id}
+                        />
+                      ))}
+                    </ul>
+                    <div className="leftAndRightArrow">
+                      <button type="button" onClick={this.prevPage}>
+                        {'<'}
+                      </button>
+                      <p>{pageNo}</p>
+                      <button type="button" onClick={this.nextPage}>
+                        {'>'}
+                      </button>
+                    </div>
+                  </section>
+                </>
               )
             }}
           </SearchContext.Consumer>
+        )
+      case pageView.failure:
+        return (
+          <div className="failureView">
+            <img
+              src="https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127829.jpg?size=626&ext=jpg&uid=R136712360&ga=GA1.1.1914382452.1716092979&semt=ais_user"
+              alt=""
+            />
+            <h1>Something Went Wrong!!!</h1>
+            <button type="button" onClick={this.reloadPage}>
+              Reload
+            </button>
+          </div>
         )
       default:
         return null
@@ -89,25 +127,7 @@ class TopRatedMovies extends Component {
   }
 
   render() {
-    const {pageNo} = this.state
-    return (
-      <>
-        <NavBar />
-        <section className="popularMovies">
-          <h1>Top Rated Movies</h1>
-          {this.getPageView()}
-          <div className="leftAndRightArrow">
-            <button type="button" onClick={this.prevPage}>
-              {'<'}
-            </button>
-            <p>{pageNo}</p>
-            <button type="button" onClick={this.nextPage}>
-              {'>'}
-            </button>
-          </div>
-        </section>
-      </>
-    )
+    return <>{this.getPageView()}</>
   }
 }
 

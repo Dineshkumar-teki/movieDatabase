@@ -5,6 +5,8 @@ const SearchContext = React.createContext({
   changeTabItem: () => {},
   searchedName: '',
   getSearchedName: () => {},
+  filterSearchedName: '',
+  getSearchBtn: () => {},
 })
 
 export default SearchContext

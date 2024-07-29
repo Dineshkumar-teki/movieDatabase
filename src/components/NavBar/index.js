@@ -26,12 +26,16 @@ class NavBar extends Component {
             changeTabItem,
             searchedName,
             getSearchedName,
+            getSearchBtn,
           } = value
           const alterTabItem = id => {
             changeTabItem(id)
           }
           const userSearchInput = event => {
             getSearchedName(event.target.value)
+          }
+          const searchBtn = () => {
+            getSearchBtn()
           }
           return (
             <nav>
@@ -43,6 +47,9 @@ class NavBar extends Component {
                   onChange={userSearchInput}
                   value={searchedName}
                 />
+                <button type="button" onClick={searchBtn}>
+                  Search
+                </button>
               </div>
               <ul
                 id="navbar"
