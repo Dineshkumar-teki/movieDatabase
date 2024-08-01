@@ -42,7 +42,7 @@ class NavBar extends Component {
               <h1 className="appLogo">movieDB</h1>
               <div className="inputContainer">
                 <input
-                  type="search"
+                  type="text"
                   placeholder="Search Movies..."
                   onChange={userSearchInput}
                   value={searchedName}

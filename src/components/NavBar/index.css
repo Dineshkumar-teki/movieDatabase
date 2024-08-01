@@ -22,7 +22,7 @@ nav ul li {
 }
 .inputContainer {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 nav div input {
   width: 100%;
@@ -45,15 +45,15 @@ nav div input {
   border-left: 0 solid;
   color: gray;
 }
-.inputContainer > button{
-  font-size: .9rem;
+.inputContainer > button {
+  font-size: 0.9rem;
   background-color: lightcoral;
   color: white;
   font-weight: 700;
   border: none;
   outline: none;
   border-radius: 8px;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
 nav a {
   color: gray;

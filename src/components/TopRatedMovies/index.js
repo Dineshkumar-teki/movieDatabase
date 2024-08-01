@@ -64,29 +64,23 @@ class TopRatedMovies extends Component {
                   .includes(filterSearchedName.toLowerCase()),
               )
               return (
-                <>
-                  <NavBar />
-                  <section className="popularMovies">
-                    <h1>Top Rated Movies</h1>
-                    <ul className="moviesContainer">
-                      {filteredList.map(eachMovie => (
-                        <MovieCard
-                          movieDetails={eachMovie}
-                          key={eachMovie.id}
-                        />
-                      ))}
-                    </ul>
-                    <div className="leftAndRightArrow">
-                      <button type="button" onClick={this.prevPage}>
-                        {'<'}
-                      </button>
-                      <p>{pageNo}</p>
-                      <button type="button" onClick={this.nextPage}>
-                        {'>'}
-                      </button>
-                    </div>
-                  </section>
-                </>
+                <section className="popularMovies">
+                  <h1>Top Rated Movies</h1>
+                  <ul className="moviesContainer">
+                    {filteredList.map(eachMovie => (
+                      <MovieCard movieDetails={eachMovie} key={eachMovie.id} />
+                    ))}
+                  </ul>
+                  <div className="leftAndRightArrow">
+                    <button type="button" onClick={this.prevPage}>
+                      {'<'}
+                    </button>
+                    <p>{pageNo}</p>
+                    <button type="button" onClick={this.nextPage}>
+                      {'>'}
+                    </button>
+                  </div>
+                </section>
               )
             }}
           </SearchContext.Consumer>
@@ -127,7 +121,12 @@ class TopRatedMovies extends Component {
   }
 
   render() {
-    return <>{this.getPageView()}</>
+    return (
+      <>
+        <NavBar />
+        {this.getPageView()}
+      </>
+    )
   }
 }
 

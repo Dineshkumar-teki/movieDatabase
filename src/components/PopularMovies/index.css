@@ -55,9 +55,9 @@ button {
 .failureView > img {
   width: 400px;
 }
-.failureView > button{
+.failureView > button {
   background-color: rgb(3, 182, 241);
-  padding: .5rem 1.8rem;
+  padding: 0.5rem 1.8rem;
   border-radius: 8px;
   border: none;
   outline: none;
