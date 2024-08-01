@@ -72,12 +72,20 @@ class UpcomingMovies extends Component {
                     ))}
                   </ul>
                   <div className="leftAndRightArrow">
-                    <button type="button" onClick={this.prevPage}>
-                      {'<'}
+                    <button
+                      type="button"
+                      className="prevButton"
+                      onClick={this.prevPage}
+                    >
+                      Prev
                     </button>
                     <p>{pageNo}</p>
-                    <button type="button" onClick={this.nextPage}>
-                      {'>'}
+                    <button
+                      type="button"
+                      className="nextButton"
+                      onClick={this.nextPage}
+                    >
+                      Next
                     </button>
                   </div>
                 </section>

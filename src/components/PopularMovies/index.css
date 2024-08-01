@@ -24,12 +24,13 @@
   align-items: center;
 }
 .leftAndRightArrow > p,
-.leftAndRightArrow > button {
-  background-color: black;
+.leftAndRightArrow > .prevButton,
+.leftAndRightArrow > .nextButton {
+  background-color: rgba(0, 0, 0, 0.8);
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   color: white;
   font-weight: 700;
   padding: 0.5rem 1rem;
