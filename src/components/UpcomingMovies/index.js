@@ -45,7 +45,7 @@ class UpcomingMovies extends Component {
   }
 
   getPageView = () => {
-    const {view, upcomingMovies, pageNo} = this.state
+    const {view, upcomingMovies} = this.state
     switch (view) {
       case pageView.loading:
         return (
@@ -71,23 +71,6 @@ class UpcomingMovies extends Component {
                       <MovieCard movieDetails={eachMovie} key={eachMovie.id} />
                     ))}
                   </ul>
-                  <div className="leftAndRightArrow">
-                    <button
-                      type="button"
-                      className="prevButton"
-                      onClick={this.prevPage}
-                    >
-                      Prev
-                    </button>
-                    <p>{pageNo}</p>
-                    <button
-                      type="button"
-                      className="nextButton"
-                      onClick={this.nextPage}
-                    >
-                      Next
-                    </button>
-                  </div>
                 </section>
               )
             }}
@@ -129,10 +112,20 @@ class UpcomingMovies extends Component {
   }
 
   render() {
+    const {pageNo} = this.state
     return (
       <>
         <NavBar />
         {this.getPageView()}
+        <div className="leftAndRightArrow">
+          <button type="button" className="prevButton" onClick={this.prevPage}>
+            Prev
+          </button>
+          <p>{pageNo}</p>
+          <button type="button" className="nextButton" onClick={this.nextPage}>
+            Next
+          </button>
+        </div>
       </>
     )
   }

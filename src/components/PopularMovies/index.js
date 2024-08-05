@@ -46,7 +46,7 @@ class PopularMovies extends Component {
   }
 
   getPageView = () => {
-    const {view, popularMovies, pageNo} = this.state
+    const {view, popularMovies} = this.state
     switch (view) {
       case pageView.loading:
         return (
@@ -72,23 +72,6 @@ class PopularMovies extends Component {
                       <MovieCard movieDetails={eachMovie} key={eachMovie.id} />
                     ))}
                   </ul>
-                  <div className="leftAndRightArrow">
-                    <button
-                      type="button"
-                      className="prevButton"
-                      onClick={this.prevPage}
-                    >
-                      Prev
-                    </button>
-                    <p>{pageNo}</p>
-                    <button
-                      type="button"
-                      className="nextButton"
-                      onClick={this.nextPage}
-                    >
-                      Next
-                    </button>
-                  </div>
                 </section>
               )
             }}
@@ -130,10 +113,20 @@ class PopularMovies extends Component {
   }
 
   render() {
+    const {pageNo} = this.state
     return (
       <>
         <NavBar />
         {this.getPageView()}
+        <div className="leftAndRightArrow">
+          <button type="button" className="prevButton" onClick={this.prevPage}>
+            Prev
+          </button>
+          <p>{pageNo}</p>
+          <button type="button" className="nextButton" onClick={this.nextPage}>
+            Next
+          </button>
+        </div>
       </>
     )
   }
